@@ -37,8 +37,15 @@
         "Using src in @font-face should not result in a warning": function(){
             var result = CSSLint.verify("@font-face { src: url(foo.otf); }", { "known-properties": 1 });
             Assert.areEqual(0, result.messages.length);    
-        }
+        },
 
+        "Using units vh, vm or vw should not result in a warning": function(){
+            var result = CSSLint.verify(
+                ".foo { height: 80vh; width: 50vw; max-width: 50vm; }",
+                { "known-properties": 1 }
+            );
+            Assert.areEqual(0, result.messages.length);
+        }
     }));
 
 })();
